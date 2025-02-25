@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Blog;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Str;
 
 class UpdateBlogRequest extends FormRequest
 {
@@ -11,7 +12,13 @@ class UpdateBlogRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;  //after login use user_id == auth()->id
+    }
+
+    public function prepareForValidation(){
+        $this->merge([
+            'slug' => Str::slug($this->slug)
+        ]);
     }
 
     /**
@@ -22,7 +29,14 @@ class UpdateBlogRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'category'=>'required|exists:categories,id',
+            'title'=>'required|string|max:255',
+            'slug'=>'required|unique:blogs,slug,'.$this->route('blog')->id,
+            'image'=>'nullable|image|mimes:png,jpg,jpeg,webp',
+            'image_caption'=>'nullable|string|max:255',
+            'short_description'=>'required|string|max:255',
+            'description'=>'required|string',
+            'date'=>'required|date',
         ];
     }
 }
