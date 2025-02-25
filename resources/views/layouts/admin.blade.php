@@ -74,9 +74,9 @@
         <div class="sidebar-wrapper scrollbar scrollbar-inner">
           <div class="sidebar-content">
             <ul class="nav nav-secondary">
-              <li class="nav-item active">
+              <li class="nav-item {{Route::is('dashboard') ? 'active' : ''}}">
                 <a
-                  href="#dashboard"
+                  href="{{route('dashboard')}}"
                 >
                   <i class="fas fa-home"></i>
                   <p>Dashboard</p>
@@ -88,13 +88,13 @@
                 </span>
                 <h4 class="text-section">Site</h4>
               </li>
-              <li class="nav-item">
+              <li class="nav-item {{Route::is('category.index') ? 'active' : ''}}">
                 <a href="{{route('category.index')}}">
                   <i class="fas fa-desktop"></i>
                   <p>Categories</p>
                 </a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item {{Route::is('blog.index') ? 'active' : ''}}">
                 <a href="{{route('blog.index')}}">
                   <i class="fas fa-desktop"></i>
                   <p>Blogs</p>

@@ -10,6 +10,6 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return view('dashboard.index');
-});
+})->name('dashboard');
 Route::resource('category', CategoryController::class)->only(['store','index','destroy','update']);
 Route::resource('blog', BlogController::class);

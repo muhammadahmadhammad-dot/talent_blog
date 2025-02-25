@@ -82,7 +82,7 @@
                                                 </td>
                                             </tr>
 
-                                            {{-- start edit mdel --}}
+                                            {{-- start edit model --}}
                                             <div class="modal fade" id="editCategoryModel{{$item->id}}">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content ">
