@@ -12,7 +12,7 @@ class UpdateBlogRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true;  //after login use user_id == auth()->id
+        return $this->route('blog')->user_id == auth()->id();  // user_id == auth()->id
     }
 
     public function prepareForValidation(){

@@ -53,7 +53,7 @@
             </div>
             <div class="card-body">
                 <form action="{{route('loginCheck')}}" method="POST">
-                   
+                   @csrf
                     <div class="form-group p-0 mb-3">
                         <label >Email Address</label>
                         <input

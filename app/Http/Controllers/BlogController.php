@@ -58,7 +58,7 @@ class BlogController extends Controller
                 'title' => $request->title,
                 'slug' => $request->slug,
                 'category_id' => $request->category,
-                'user_id' => 1, // fixing after login -------------------------------ERROR
+                'user_id' => auth()->id(), 
                 'short_description' => $request->short_description,
                 'description' => $request->description,
                 'date' => $request->date,

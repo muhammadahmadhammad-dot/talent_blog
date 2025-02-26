@@ -1,6 +1,6 @@
 @if (session('error'))
     <div class="alert alert-danger card-sub alert-dismissible fade show" role="alert">
-       <p> {{ session('error') }}</p>
+       <p class="p-0 m-0"> {{ session('error') }}</p>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 @endif

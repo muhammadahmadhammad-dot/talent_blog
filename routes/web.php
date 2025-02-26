@@ -3,11 +3,12 @@
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\SiteController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/', [SiteController::class, 'home'])->name('home');
+Route::get('/blogs/{slug}', [SiteController::class, 'blogDetail'])->name('blogs.detail');
 
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'loginCheck'])->name('loginCheck');
