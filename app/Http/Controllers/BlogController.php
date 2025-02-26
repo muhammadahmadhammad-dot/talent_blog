@@ -96,7 +96,7 @@ class BlogController extends Controller
                 // move to folder
                 Storage::disk('public')->put($imageName, file_get_contents($image));
 
-                $validated['iamge'] = $imageName;
+                $validated['image'] = $imageName;
 
 
                 // delete old image
@@ -119,6 +119,10 @@ class BlogController extends Controller
         $title = $blog->title;
         $id = $blog->id;
         try {
+             // delete old image
+             if ($blog->image) {
+                Storage::disk('public')->delete($blog->image);
+            }
             $blog->delete();
             return to_route('blog.index')->with('success', "Blog \" {$title} \" deleted successfully.");
         } catch (\Exception $exp) {

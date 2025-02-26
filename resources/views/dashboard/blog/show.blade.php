@@ -92,7 +92,7 @@
                             </div>
                             @if ($blog->image)
                                 <div>
-                                    <img src="{{ asset('storage/' . $blog->image) }}" alt="">
+                                    <img class="img-fluid" src="{{ asset('storage/' . $blog->image) }}" alt="">
                                 </div>
                             @endif
                         </div>

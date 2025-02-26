@@ -10,8 +10,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [SiteController::class, 'home'])->name('home');
 Route::get('/blogs/{slug}', [SiteController::class, 'blogDetail'])->name('blogs.detail');
 
-Route::get('/login', [AuthController::class, 'login'])->name('login');
-Route::post('/login', [AuthController::class, 'loginCheck'])->name('loginCheck');
+Route::middleware('guest')->group(function(){
+    Route::get('/login', [AuthController::class, 'login'])->name('login');
+    Route::post('/login', [AuthController::class, 'loginCheck'])->name('loginCheck');
+});
 
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
 
