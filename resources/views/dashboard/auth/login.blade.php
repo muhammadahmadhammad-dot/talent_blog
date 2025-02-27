@@ -44,52 +44,55 @@
 
 <body>
     <div class="d-flex  justify-content-center align-items-center" style="height: 100vh; ">
-        <div class="card" style="width:320px;">
-            <div class="card-header">
-                <div class="card-title">
-                    Login to {{config('app.name')}}
-                </div>
-                @include('includes._message')
-            </div>
-            <div class="card-body">
-                <form action="{{route('loginCheck')}}" method="POST">
-                   @csrf
+       <div class="container-fluid" style="width:320px;">
+        <div class="card" >
+          <div class="card-header">
+              <div class="card-title">
+                  Login to {{config('app.name')}}
+              </div>
+              @include('includes._message')
+          </div>
+          <div class="card-body">
+              <form action="{{route('loginCheck')}}" method="POST">
+                 @csrf
+                  <div class="form-group p-0 mb-3">
+                      <label >Email Address</label>
+                      <input
+                      value="{{old('email')}}"
+                        type="email"
+                        class="form-control"
+                        name="email"
+                        placeholder="Enter Email"
+                      />
+                      @error('email')
+                          <p class="text-danger">{{ $message }}</p>
+                      @enderror
+                    </div>
                     <div class="form-group p-0 mb-3">
-                        <label >Email Address</label>
-                        <input
-                        value="{{old('email')}}"
-                          type="email"
-                          class="form-control"
-                          name="email"
-                          placeholder="Enter Email"
-                        />
-                        @error('email')
-                            <p class="text-danger">{{ $message }}</p>
-                        @enderror
-                      </div>
-                      <div class="form-group p-0 mb-3">
-                        <label >Password</label>
-                        <input
-                        value="{{old('password')}}"
-                          type="password"
-                          class="form-control"
-                          name="password"
-                          placeholder="Password"
-                        />
-                        @error('password')
-                        <p class="text-danger">{{ $message }}</p>
-                    @enderror
-                      </div>
-                      <div class="mb-3">
-                        <button type="submit" class="btn w-100 btn-primary">
-                            <span class="btn-label">
-                                <i class="fas fa-sign-in-alt"></i>
-                            </span>
-                            Login</button>
-                      </div>
-                </form>
-            </div>
-        </div>
+                      <label >Password</label>
+                      <input
+                      value="{{old('password')}}"
+                        type="password"
+                        class="form-control"
+                        name="password"
+                        placeholder="Password"
+                      />
+                      @error('password')
+                      <p class="text-danger">{{ $message }}</p>
+                  @enderror
+                    </div>
+                    <div class="mb-3">
+                      <button type="submit" class="btn w-100 btn-primary">
+                          <span class="btn-label">
+                              <i class="fas fa-sign-in-alt"></i>
+                          </span>
+                          Login</button>
+                    </div>
+              </form>
+          </div>
+      </div>
+      <a href="{{route('home')}}" class="text-center">Go back to home</a>
+       </div>
     </div>
 </body>
 </html>
